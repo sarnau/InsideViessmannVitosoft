@@ -1,0 +1,51 @@
+digraph structs {
+  node [shape=record, style=rounded];
+  rankdir=LR;
+
+  ecnDeviceType [ label="{<ecnDeviceType> ecnDeviceType|vendors}|{<Id>Id|54 – only used Id}|{Name|Viessmann Anlage}|{Description|-}|{Manufacturer|-}|<StatusEventTypeId>StatusEventTypeId|{TechnicalIdentificationAddress|?}", style=bold ];
+  ecnDeviceTypeDataPointTypeLink [ label="{<ecnDeviceTypeDataPointTypeLink> ecnDeviceTypeDataPointTypeLink|1:n|vendor to systems}|<DeviceTypeId>DeviceTypeId|<DataPointTypeId>DataPointTypeId", style=dashed ];
+  ecnDatapointType [ label="{<ecnDatapointType> ecnDatapointType|systems}|{<Id>Id|unique ID &gt; 1}|{Name|localizable name}|{Description|localizable description}|<StatusEventTypeId>StatusEventTypeId|{Address|ref to ecnDataPointType.xml}", style=bold ];
+  ecnDataPointTypeEventTypeLink [ label="{<ecnDataPointTypeEventTypeLink> ecnDataPointTypeEventTypeLink|1:n|system to events}|<DataPointTypeId>DataPointTypeId|<EventTypeId>EventTypeId", style=dashed ];
+  ecnEventType [ label="{<ecnEventType> ecnEventType|individual events}|{<Id>Id|unique ID &gt; 1}|{Name|localizable name}|{Description|localizable description}|{Address|ref to ecnEventType.xml}|{EnumType|true/false}|{Conversion|value conversion}|{Priority|50/100}|{Filtercriterion|always true}|{Reportingcriterion|always true}|{Type|1=Read-only, 2=Read/Write, 3=Write-only}|{URL|URL for custom editor}|DefaultValue", style=bold ];
+  ecnEventTypeEventValueTypeLink [ label="{<ecnEventTypeEventValueTypeLink> ecnEventTypeEventValueTypeLink|1:n|Events to values}|<EventTypeId>EventTypeId|<EventValueId>EventValueId", style=dashed ];
+  ecnEventValueType [ label="{<ecnEventValueType> ecnEventValueType|specific values for an event}|{<Id>Id|unique ID &gt; 1}|{Name|localizable name}|{Description|localizable description}|{EnumAddressValue|matching enum value}|{EnumReplaceValue|localizable text replacement for an value}|<StatusTypeId>StatusTypeId|{Unit|reference to Textresource_XX.xml}|{DataType|Binary,Bit,DateTime,Float,Int,NText,VarChar}|{Stepping|optional, default=1}|{LowerBorder|optional, default=0}|{UpperBorder|optional}", style=bold ];
+  ecnEventTypeEventTypeGroupLink [ label="{<ecnEventTypeEventTypeGroupLink> ecnEventTypeEventTypeGroupLink|1:n|Events to groups}|<EventTypeId>EventTypeId|<EventTypeGroupId>EventTypeGroupId|{EventTypeOrder|sorting order}", style=dashed ];
+
+  ecnEventTypeGroup [ label="{<ecnEventTypeGroup> ecnEventTypeGroup|group hierarchy of events}|{<Id>Id|unique ID &gt; 1}|{Name|localizable name}|{<ParentId>ParentId|-1=no parent}|{EntrancePoint|true/false}|{Address|ref to ecnEventTypeGroup.xml}|{<DeviceTypeId>DeviceTypeId|ref to vendor}|{<DataPointTypeId>DataPointTypeId|ref to system}|{OrderIndex|sorting order}" ];
+
+  ecnDisplayConditionGroup [ label="{<ecnDisplayConditionGroup> ecnDisplayConditionGroup}|{<Id>Id|unique ID &gt; 1}|{Name|localizable name}|{Description|localizable description}|{Type|1=AND,2=OR}|{<ParentId>ParentId|if dest is set: -1=no parent}|{<EventTypeIdDest>EventTypeIdDest|-1 = unused}|{<EventTypeGroupIdDest>EventTypeGroupIdDest|-1 = unused}" ];
+
+  ecnDisplayCondition [ label="{<ecnDisplayCondition> ecnDisplayCondition}|{<Id>Id|unique ID &gt; 1}|{Name|localizable name}|{Description|localizable description}|{<ConditionGroupId>ConditionGroupId|group for this condition}|{<EventTypeIdCondition>EventTypeIdCondition|event for the condition}|{<EventTypeValueCondition>EventTypeValueCondition|value for the condition}|{Condition|0:=,1:≠,2:&gt;3:≥,4:&lt;,5:≤}|{ConditionValue|optional}" ];
+
+
+  ecnStatusType [ label="{<ecnStatusType> ecnStatusType}|{<Id>Id|unique ID &gt; 1}|{Name|localizable name}|{ShowInEventTray|true/false}|Image|{SortOrder|sorting order}", style=diagonals ];
+
+
+  ecnDeviceType:Id -> ecnDeviceTypeDataPointTypeLink:DeviceTypeId;
+  ecnDeviceType:StatusEventTypeId -> ecnStatusType:Id;
+
+  ecnDeviceTypeDataPointTypeLink:DataPointTypeId -> ecnDatapointType:Id;
+  ecnDatapointType:Id -> ecnDataPointTypeEventTypeLink:DataPointTypeId;
+  ecnDatapointType:StatusEventTypeId -> ecnStatusType:Id;
+
+  ecnDataPointTypeEventTypeLink:EventTypeId -> ecnEventType:Id;
+  ecnEventType:Id -> ecnEventTypeEventValueTypeLink:EventTypeId;
+  ecnEventType:Id -> ecnEventTypeEventTypeGroupLink:EventTypeId;
+
+  ecnEventTypeEventValueTypeLink:EventValueId -> ecnEventValueType:Id;
+  ecnEventValueType:StatusTypeId -> ecnStatusType:Id;
+
+  ecnEventTypeGroup:ParentId -> ecnEventTypeGroup:Id;
+  ecnEventTypeGroup:DeviceTypeId -> ecnDeviceType:Id;
+  ecnEventTypeGroup:DataPointTypeId -> ecnDatapointType:Id;
+  ecnEventTypeEventTypeGroupLink:EventTypeGroupId -> ecnEventTypeGroup:Id;
+
+  ecnDisplayConditionGroup:ParentId -> ecnDisplayConditionGroup:Id;
+  ecnDisplayConditionGroup:EventTypeIdDest -> ecnEventType:Id;
+  ecnEventTypeGroup:Id -> ecnDisplayConditionGroup:EventTypeGroupIdDest;
+
+  ecnDisplayConditionGroup:Id -> ecnDisplayCondition:ConditionGroupId;
+  ecnEventType:Id -> ecnDisplayCondition:EventTypeIdCondition;
+  ecnEventValueType:Id -> ecnDisplayCondition:EventTypeValueCondition;
+
+}
