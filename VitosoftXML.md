@@ -16,7 +16,7 @@ Vitosoft uses a large Microsoft SQL Server database `ecnViessmann.mdf/ldf` to ke
 
 There are several XML files of interest. *Warning*: You actually need to launch Vitosoft _once_ for it to generate the `ecnDataPointType.xml` and `ecnEventType.xml` files from `ecnViessmann.mdf`. The outdated files from the EXE will be moved to a folder named `configbackup`.
 
-- `DPDefinitions.xml` - a massive almost 200GB large file, which contains the database of all data points in XML format
+- `DPDefinitions.xml` - a massive almost 200MB large file, which contains the database of all data points in XML format
 - `ecnVersion.xml` – contains the `DataPointDefinitionVersion`. It is regenerated on first launch from the SQL database, which bumps the version number to `0.0.26.4683`.
 - `ecnDataPointType.xml` - The file contains all information needed to identify the Viessmann heating unit. The `ID` of the unit is used as `Address` in the `ecnDatapointType` inside `DPDefinitions.xml`.
 - `ecnEventType.xml` - Events are readable and/or writeable values or callable functions to the heating unit. The `ID` of the event is used as `Address` in the `ecnEventType` inside `DPDefinitions.xml`.
