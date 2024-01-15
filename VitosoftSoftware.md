@@ -1,10 +1,10 @@
 # Vitosoft Software
 
-[Vitosoft 300 Typ SID1](https://connectivity.viessmann.com/en-en/mp_rt/vitosoft.html) is available from Viessmann. It is only available for Windows.
+[Vitosoft 300 Typ SID1](https://connectivity.viessmann.com/de/mp-fp/vitosoft.html) is available from Viessmann. It is only available for Windows.
 
 It requires an OptoLink/USB adapter or a system with an integrated WLAN interface.
 
-There is a 90 day [demo version](https://connectivity.viessmann.com/content/dam/vi-micro/CONNECTIVITY/Vitosoft/Vitosoft300SID1_Setup.exe/_jcr_content/renditions/original.media_file.download_attachment.file/Vitosoft300SID1_Setup.exe) available.
+There is a 90 day [demo version](https://connectivity.viessmann.com/content/dam/public-micro/connectivity/vitosoft/de/Vitosoft-300-SID1-Setup.zip/_jcr_content/renditions/original.media_file.download_attachment.file/Vitosoft-300-SID1-Setup.zip) available.
 
 The version is outdated and requires updating directly after installation.
 
@@ -12,7 +12,7 @@ These are the known versions:
 - Release 6.1.0.2 (15.12.2015) - available at [http://update.vitosoft.de/CurrentVersion/Vitosoft300SID1_Setup.exe](http://update.vitosoft.de/CurrentVersion/Vitosoft300SID1_Setup.exe) or inside [https://update-vitosoft.viessmann.com/CurrentVersion/Vitosoft300WithoutDocs.iso](https://update-vitosoft.viessmann.com/CurrentVersion/Vitosoft300WithoutDocs.iso) as the file `Vitosoft300SID1_Fallback_Setup.exe`
 - Release 7.1.4.8 (21.10.2016)
 - Release 8.0.5.0 (12.07.2017) - available at [https://connectivity.viessmann.com/](https://connectivity.viessmann.com/content/dam/vi-micro/CONNECTIVITY/Vitosoft/Vitosoft300SID1_Setup.exe/_jcr_content/renditions/original.media_file.download_attachment.file/Vitosoft300SID1_Setup.exe)
-- Release 8.0.6.2 (14.12.2017)- only available via a software update, see below.
+- Release 8.0.6.2 (14.12.2017)- The demo link gets you this version.
 
 As you can see, there seem to be no new updates for 3.5 years.
 
