@@ -10,7 +10,7 @@ import re
 pp = pprint.PrettyPrinter(width=200,compact=True)
 
 # This path needs to be adjusted to point to a directory for all XML files
-DATAPATH = "./data/"
+DATAPATH = "../data/"
 
 MAX_STR_LENGTH = 1000 # certain strings (e.g. conditions) can be very long. This shortens them. 1000 matches "print everything"
 
@@ -473,7 +473,7 @@ def parse_DPDefinitions(selectedDatapointTypeAddress):
 
 if __name__ == "__main__":
 	# print all events with their conditions, sorted by groups for a specific data point
-	parse_Textresource('en') # load english localization, 'de' is German
+	parse_Textresource('de') # load english localization, 'de' is German
 	parse_ecnEventTypes()
 	parse_DPDefinitions('VScotHO1_72')
 	# 20cb 0351 0000 0146

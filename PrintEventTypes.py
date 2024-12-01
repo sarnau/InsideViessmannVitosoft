@@ -2,7 +2,7 @@ from xml.etree import ElementTree as etree
 
 
 # This path needs to be adjusted to point to a directory for all XML files
-DATAPATH = "./data/"
+DATAPATH = "../data/"
 
 textList = {}
 def parse_Textresource(lang):
@@ -140,5 +140,5 @@ def parse_ecnEventType():
 			print('%6s %s %s %s --- %s' % (event['Address'],event['FCRead'],border,parameter,IDstr))
 
 if __name__ == "__main__":
-	parse_Textresource('en') # load english localization, 'de' is German
+	parse_Textresource('de') # load english localization, 'de' is German
 	parse_ecnEventType();

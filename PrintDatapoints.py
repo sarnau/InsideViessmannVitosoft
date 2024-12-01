@@ -8,7 +8,7 @@ import sys
 pp = pprint.PrettyPrinter(width=200,compact=True)
 
 # This path needs to be adjusted to point to a directory for all XML files
-DATAPATH = "./data/"
+DATAPATH = "../data/"
 
 def print_allDataPoints():
 	# print supported Optolink systems (at least remove all MBus, LON, etc ones)
